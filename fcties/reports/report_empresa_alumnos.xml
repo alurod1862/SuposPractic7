@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+        id="fcties.informe_empresa"
+        string="Informe Empresa"
+        model="fcties.empresa"
+        report_type="qweb-pdf"
+        name="fcties.informe_empresa_view"
+        file="fcties.informe_empresa_view"
+    />
+
+    <template id="informe_empresa_view">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="empresa">
+                <div class="page">
+                    <div class="header">
+                        <div class="company-info">
+                            <h2>Información de la Empresa: <t t-esc="empresa.name"/></h2>
+                            <p>
+                                <strong>Persona de contacto:</strong> <span t-esc="empresa.persona_contacto"/>
+                            </p>
+                            <p>
+                                <strong>Teléfono de contacto:</strong> <span t-esc="empresa.telefono_contacto"/>
+                            </p>
+                            <p>
+                                <strong>Correo electrónico:</strong> <span t-esc="empresa.email"/>
+                            </p>
+                            <p>
+                                <strong>Dirección:</strong> <span t-esc="empresa.direccion"/>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="section-heading">
+                            <h3>Alumnos</h3>
+                        </div>
+
+                        <table class="student-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Teléfono</th>
+                                    <th>Periodo de Práctica</th>
+                                    <th>Ciclo Formativo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="empresa.alumnos_ids" t-as="alumno">
+                                    <tr>
+                                        <td><t t-esc="alumno.name"/></td>
+                                        <td><t t-esc="alumno.apellidos"/></td>
+                                        <td><t t-esc="alumno.telefono"/></td>
+                                        <td><t t-esc="alumno.periodo_practica"/></td>
+                                        <td><t t-esc="alumno.ciclo_formativo"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

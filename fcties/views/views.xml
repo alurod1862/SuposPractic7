@@ -1,0 +1,123 @@
+<odoo>
+  <data>
+
+    <menuitem name="FCTIES" id="fcties.menu_root" />
+    
+    <!-- Vista de lista para Alumno -->
+
+    <record model="ir.actions.act_window" id="fcties.alumno_action_window">
+      <field name="name">fcties.alumno.action_window</field>
+      <field name="res_model">fcties.alumno</field>
+      <field name="view_mode">tree,form,search</field>
+    </record>
+    <menuitem name="Alumno" id="fcties.alumno_menu" parent="fcties.menu_root" action="fcties.alumno_action_window" />
+
+    <record id="fcties.alumno_tree" model="ir.ui.view">
+      <field name="name">fcties.alumno.tree</field>
+      <field name="model">fcties.alumno</field>
+      <field name="arch" type="xml">
+          <tree>
+              <field name="name"/>
+              <field name="apellidos"/>
+              <field name="fecha_nacimiento"/>
+              <field name="curso_academico"/>
+              <field name="email"/>
+              <field name="telefono"/>
+              <field name="ciclo_formativo"/>
+              <field name="periodo_practica"/>
+              <field name="nota_media"/>
+              <field name="nota_media_texto"/>
+              <field name="empresa_id"/>
+          </tree>
+      </field>
+    </record>
+
+    
+    <record id="fcties.alumno_search" model="ir.ui.view">
+      <field name="name">fcties.alumno.search</field>
+      <field name="model">fcties.alumno</field>
+      <field name="arch" type="xml">
+          <search>
+              <field name="apellidos"/>
+              <field name="empresa_id"/>
+              <field name="periodo_practica"/>
+              <field name="curso_academico"/>
+              <filter name="Nota Media Mayor a 8" domain="[('nota_media', '&gt;', 8)]"/>
+          </search>
+      </field>
+    </record>
+
+
+    <!-- Vista de formulario para Alumno -->
+    <record id="fcties.alumno_form" model="ir.ui.view">
+      <field name="name">fcties.alumno.form</field>
+      <field name="model">fcties.alumno</field>
+      <field name="arch" type="xml">
+          <form>
+              <group>
+                  <field name="name"/>
+                  <field name="apellidos"/>
+                  <field name="fecha_nacimiento"/>
+                  <field name="curso_academico"/>
+                  <field name="email"/>
+                  <field name="telefono"/>
+                  <field name="ciclo_formativo"/>
+                  <field name="periodo_practica"/>
+                  <field name="nota_media"/>
+                  <field name="empresa_id"/>
+              </group>
+          </form>
+      </field>
+    </record>
+
+    <!-- Vista de lista para Empresa -->
+
+    <record model="ir.actions.act_window" id="fcties.empresa_action_window">
+      <field name="name">fcties.empresa.action_window</field>
+      <field name="res_model">fcties.empresa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Empresa" id="fcties.empresa_menu" parent="fcties.menu_root" action="fcties.empresa_action_window" />
+
+    <record id="fcties.empresa_tree" model="ir.ui.view">
+      <field name="name">fcties.empresa.tree</field>
+      <field name="model">fcties.empresa</field>
+      <field name="arch" type="xml">
+          <tree>
+              <field name="name"/>
+              <field name="persona_contacto"/>
+              <field name="telefono_contacto"/>
+              <field name="email"/>
+              <field name="direccion"/>
+              <field name="alumnos_ids"/>
+          </tree>
+      </field>
+    </record>
+
+    <!-- Vista de formulario para Empresa -->
+    <record id="fcties.empresa_form" model="ir.ui.view">
+      <field name="name">fcties.empresa.form</field>
+      <field name="model">fcties.empresa</field>
+      <field name="arch" type="xml">
+          <form>
+              <group>
+                  <field name="name"/>
+                  <field name="persona_contacto"/>
+                  <field name="telefono_contacto"/>
+                  <field name="email"/>
+                  <field name="direccion"/>
+                  <field name="alumnos_ids" widget="one2many_tags" options="{'no_create': True}">
+                      <tree>
+                          <field name="name"/>
+                          <field name="apellidos"/>
+                          <field name="curso_academico"/>
+                          <field name="periodo_practica"/>
+                      </tree>
+                  </field>
+              </group>
+          </form>
+      </field>
+    </record>
+
+  </data>
+</odoo>
