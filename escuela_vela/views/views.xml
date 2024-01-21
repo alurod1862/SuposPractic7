@@ -1,0 +1,171 @@
+<odoo>
+  <data>
+
+    <menuitem name="EscuelaVela" id="escuela_vela.menu_root" />
+
+    <!-- Alumno -->
+
+    <record model="ir.actions.act_window" id="escuela_vela.alumno_action_window">
+      <field name="name">escuelavela.alumno.action_window</field>
+      <field name="res_model">escuelavela.alumno</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Alumno" id="escuela_vela.alumno_menu" parent="escuela_vela.menu_root" action="escuela_vela.alumno_action_window" />
+
+    <record id="escuela_vela.alumno_tree" model="ir.ui.view">
+        <field name="name">escuelavela.alumno.tree</field>
+        <field name="model">escuelavela.alumno</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="contact"/>
+                <field name="matricula_number"/>
+
+                <field name="escuela"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="escuela_vela.alumno_form" model="ir.ui.view">
+      <field name="name">escuelavela.alumno.form</field>
+      <field name="model">escuelavela.alumno</field>
+      <field name="arch" type="xml">
+          <form>
+              <sheet>
+                  <group>
+                    <field name="name"/>
+                    <field name="contact"/>
+
+                    <field name="escuela"/>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Monitor -->
+
+    <record model="ir.actions.act_window" id="escuela_vela.monitor_action_window">
+      <field name="name">escuelavela.monitor.action_window</field>
+      <field name="res_model">escuelavela.monitor</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Monitor" id="escuela_vela.monitor_menu" parent="escuela_vela.menu_root" action="escuela_vela.monitor_action_window" />
+
+    <record id="escuela_vela.monitor_tree" model="ir.ui.view">
+        <field name="name">escuelavela.monitor.tree</field>
+        <field name="model">escuelavela.monitor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="contact"/>
+                <field name="unique_id"/>
+
+                <field name="escuelas_colaboradoras"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="escuela_vela.monitor_form" model="ir.ui.view">
+      <field name="name">escuelavela.monitor.form</field>
+      <field name="model">escuelavela.monitor</field>
+      <field name="arch" type="xml">
+          <form>
+              <sheet>
+                  <group>
+                    <field name="name"/>
+                    <field name="contact"/>
+                    <field name="unique_id"/>
+    
+                    <field name="escuelas_colaboradoras"/>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Curso -->
+
+    <record model="ir.actions.act_window" id="escuela_vela.curso_action_window">
+      <field name="name">escuelavela.curso.action_window</field>
+      <field name="res_model">escuelavela.curso</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Curso" id="escuela_vela.curso_menu" parent="escuela_vela.menu_root" action="escuela_vela.curso_action_window" />
+
+    <record id="escuela_vela.curso_tree" model="ir.ui.view">
+        <field name="name">escuelavela.curso.tree</field>
+        <field name="model">escuelavela.curso</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="title"/>
+                <field name="duration_days"/>
+                <field name="duration_hours"/>
+                <field name="price"/>
+
+                <field name="escuela"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="escuela_vela.curso_form" model="ir.ui.view">
+      <field name="name">escuelavela.curso.form</field>
+      <field name="model">escuelavela.curso</field>
+      <field name="arch" type="xml">
+          <form>
+              <sheet>
+                  <group>
+                      <field name="title"/>
+                      <field name="duration_days"/>
+                      <field name="duration_hours"/>
+                      <field name="price"/>
+      
+                      <field name="escuela"/>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+    </record>
+
+    <!-- Escuela -->
+
+    <record model="ir.actions.act_window" id="escuela_vela.escuela_action_window">
+      <field name="name">escuelavela.escuela.action_window</field>
+      <field name="res_model">escuelavela.escuela</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem name="Escuela" id="escuela_vela.escuela_menu" parent="escuela_vela.menu_root" action="escuela_vela.escuela_action_window" />
+    
+    <record id="escuela_vela.escula_tree" model="ir.ui.view">
+        <field name="name">escuelavela.escuela.tree</field>
+        <field name="model">escuelavela.escuela</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="denominacion"/>
+                <field name="logo" widget="image" options="{'size': [150, 150]}"/>
+                <field name="contact"/>
+
+                <field name="cursos"/>
+                <field name="monitores"/>
+                <field name="alumnos"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="escuela_vela.escula_form" model="ir.ui.view">
+      <field name="name">escuelavela.escuela.form</field>
+      <field name="model">escuelavela.escuela</field>
+      <field name="arch" type="xml">
+          <form>
+              <sheet>
+                  <group>
+                      <field name="denominacion"/>
+                      <field name="logo" widget="image" options="{'size': [150, 150]}"/>
+                      <field name="contact"/>
+                  </group>
+              </sheet>
+          </form>
+      </field>
+    </record>
+  </data>
+</odoo>

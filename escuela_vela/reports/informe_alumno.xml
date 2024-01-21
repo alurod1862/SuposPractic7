@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <!-- Reporte de Listado de Alumnos -->
+        <report
+            id="escuela_vela.informe_alumno"
+            string="Informe de Alumno"
+            model="escuelavela.alumno"
+            report_type="qweb-pdf"
+            name="escuela_vela.informe_alumno_view"
+            file="escuela_vela.informe_alumno_view"
+        />
+
+        <template id="informe_alumno_view">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="alumno">
+                    <div class="page">
+                        <h1 t-field="alumno.name"/>
+                        <div>
+                            <strong>MATRICULA: </strong>
+                            <span t-field="alumno.matricula_number"/>
+                        </div>
+                        <div>
+                            <strong>CONTACTO: </strong>
+                            <span t-field="alumno.contact"/>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
